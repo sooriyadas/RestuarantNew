@@ -1,0 +1,12 @@
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\WcfService.dll.config
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\WcfService.dll
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\WcfService.pdb
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\Data.dll
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\EntityFramework.dll
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\Data.pdb
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\EntityFramework.xml
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\obj\Debug\WcfService.csprojResolveAssemblyReference.cache
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\obj\Debug\WcfService.dll
+C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\WcfService\obj\Debug\WcfService.pdb

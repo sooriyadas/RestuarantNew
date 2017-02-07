@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Data
+{
+  public  interface IItemManagement
+    {
+      IList<MenuItem> GetAllItems();
+
+      bool CreateCheck(CheckSumry check);
+    }
+}

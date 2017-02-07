@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestuarantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CheckDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Total" Type="float" />
+    <Property Name="CheckId" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheckNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Total" Type="float" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_CheckDetail_CheckSummary">
+    <End Role="CheckSummary" Type="Self.CheckSummary" Multiplicity="1" />
+    <End Role="CheckDetail" Type="Self.CheckDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckSummary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckDetail">
+        <PropertyRef Name="CheckId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestuarantModelStoreContainer">
+    <EntitySet Name="CheckDetail" EntityType="Self.CheckDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckSummary" EntityType="Self.CheckSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CheckDetail_CheckSummary" Association="Self.FK_CheckDetail_CheckSummary">
+      <End Role="CheckSummary" EntitySet="CheckSummary" />
+      <End Role="CheckDetail" EntitySet="CheckDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

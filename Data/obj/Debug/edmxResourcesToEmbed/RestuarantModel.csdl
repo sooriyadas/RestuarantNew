@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestuarantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="RestuarantEntitiesNew" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="CheckDetails" EntityType="RestuarantModel.CheckDetail" />
+    <EntitySet Name="CheckSummaries" EntityType="RestuarantModel.CheckSummary" />
+    <AssociationSet Name="FK_CheckDetail_CheckSummary" Association="RestuarantModel.FK_CheckDetail_CheckSummary">
+      <End Role="CheckSummary" EntitySet="CheckSummaries" />
+      <End Role="CheckDetail" EntitySet="CheckDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CheckDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="CheckId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckSummary" Relationship="RestuarantModel.FK_CheckDetail_CheckSummary" FromRole="CheckDetail" ToRole="CheckSummary" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CheckNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Double" />
+    <NavigationProperty Name="CheckDetails" Relationship="RestuarantModel.FK_CheckDetail_CheckSummary" FromRole="CheckSummary" ToRole="CheckDetail" />
+  </EntityType>
+  <Association Name="FK_CheckDetail_CheckSummary">
+    <End Type="RestuarantModel.CheckSummary" Role="CheckSummary" Multiplicity="1" />
+    <End Type="RestuarantModel.CheckDetail" Role="CheckDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckSummary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckDetail">
+        <PropertyRef Name="CheckId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

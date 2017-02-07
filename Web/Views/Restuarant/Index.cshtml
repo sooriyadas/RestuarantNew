@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Web.Models.Items>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<h2>Menu Items</h2>
+
+<div class="col-md-8">
+
+
+    <table class="table" id="menutbl" >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+               
+                <td>
+
+                    <button class="btn btn-primary" onclick="AddToList('@item.Id')">Add to List</button>
+                </td>
+            </tr>
+}
+
+    </table>
+    @Html.ActionLink("SOAP", "Index", "Restuarant")
+    @Html.ActionLink("REST", "GetAllItemsRest", "Restuarant")
+</div>
+<div class="col-md-4 ">
+    <h4>Order List</h4>
+   <div>
+       Date : <label id="date">@ViewBag.Date</label><br />
+Chk No:<input type="text" id ="chkNo"></input>         
+    </div>
+    <table id="myTable" class="table">
+
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+       Sub Total : <label id="total"></label>
+    </div>
+    <div>
+        <input type="button" value="Add To" class="btn btn-success" onclick="AddTo()" />
+    </div>
+   
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $("#myTable").on('click', '.remCF', function () {
+            $(this).parent().parent().remove();
+            totalPrice()
+        });
+    });
+
+    function AddToList(a, b, c) {
+        debugger
+        $('#myTable tbody').append('<tr><td>' + a + ' </td><td class="price">' + b + '</td><td><a href="javascript:void(0);" class="remCF btn btn-danger">Remove</a></td></tr>');
+        totalPrice()
+        // $("#myTable tbody").append('<tr valign="top"><th scope="row"><label for="customFieldName">Custom Field</label></th><td><input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp; <input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp; <a href="javascript:void(0);" class="remCF">Remove</a></td></tr>');
+    }
+
+    //add item to order list
+    function AddToList(id) {
+        $.ajax({
+            url: '@Url.Content("~/Restuarant/AddToList")',
+            dataType: "json",
+            type: "POST",
+            data: JSON.stringify({
+                id: id,
+            }),
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+
+                debugger;
+                $('#myTable tbody').append('<tr><td>' + data.ItemName + ' </td><td class="price">' + data.Price + '</td><td>' + data.Qty + '</td><td class="total">' + data.Qty * data.Price + '</td><td><a href="javascript:void(0);" class="remCF btn btn-danger">Remove</a></td></tr>');
+                totalPrice()
+
+
+            },
+            error: function (e) {
+
+            }
+
+        });
+
+    }
+    function totalPrice() {
+        debugger
+        var sum = 0;
+        $('.total').each(function () {
+            sum += parseFloat($(this).text());
+        });
+        $('#total').html(sum)
+    }
+
+    function AddTo() {
+        debugger
+        var data = getTableData();
+        var date = $("#date").val();
+        var chkNo = $("#chkNo").val();
+        var subTot = $("#total").text();
+
+        $.ajax({
+            url: '@Url.Content("~/Restuarant/CreateCheck")',
+            dataType: "json",
+            type: "POST",
+            data: JSON.stringify({
+                date: date,
+                chkNo: chkNo,
+                subTot: subTot
+            }),
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (true) {
+                    alert("Successfully added")
+                }
+                else {
+                }
+            },
+            error: function (e) {
+
+            }
+
+        });
+    }
+    function getTableData() {
+        // Array of data we'll return
+        var data = [];
+        debugger
+        // Counter
+        var i = 0;
+
+        // Cycle through each of the table body's rows
+        $('#myTable tbody tr').each(function (index, tr) {
+            var tds = $(tr).find('td');
+            // Check we've got two <td>s
+            if (tds.length > 1) {
+                // If we do, get their text content and add it to the data array
+                data[i++] = {
+                    name: tds[0].textContent
+
+                }
+            }
+        });
+        return data;
+
+    }
+</script> 
+<style>
+    .tab-content {
+        color: white;
+        background-color: #428bca;
+        padding: 5px 15px;
+    }
+
+    #Tab .nav-pills > li > a {
+        border-radius: 0;
+    }
+
+    #menutbl {
+        background-color: rgb(234, 237, 200);
+    }
+</style>

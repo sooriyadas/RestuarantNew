@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestuarantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Restuarant.dbo.Item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ItemName" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="RestuarantModelStoreContainer">
+    <EntitySet Name="Item" EntityType="Self.Item" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Item].[Id] AS [Id], 
+    [Item].[ItemName] AS [ItemName], 
+    [Item].[Price] AS [Price], 
+    [Item].[Description] AS [Description], 
+    [Item].[Category] AS [Category]
+    FROM [dbo].[Item] AS [Item]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
