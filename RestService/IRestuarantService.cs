@@ -17,6 +17,8 @@ namespace RestService
         [WebInvoke(Method = "GET", UriTemplate = "Items", ResponseFormat = WebMessageFormat.Json)]
         IList<MenuItem> GetAllItems();
 
-
+        [OperationContract]
+        [WebInvoke(Method="POST",UriTemplate="Check",ResponseFormat=WebMessageFormat.Json,RequestFormat=WebMessageFormat.Json)]
+        bool CreateCheck(CheckSumry check);
     }
 }

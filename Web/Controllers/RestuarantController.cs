@@ -10,6 +10,7 @@ using Web.ServiceBridge.Interfaces;
 
 namespace Web.Controllers
 {
+ 
     public class RestuarantController : Controller
     {
         //
@@ -20,28 +21,46 @@ namespace Web.Controllers
         /// Index Page
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Index(string serviceType)
         {
+            IList<Items> list = new List<Items>();
             Session["OrderList"] = null;
-            var list = servicebridge.GetAllItems();
+            Session["ServiceType"] = serviceType ;
+
+            if (serviceType == null || serviceType == "SOAP")
+            {
+
+                list = servicebridge.GetAllItems();
+
+            }
+            else
+            {
+                list = servicebridge.GetAllItemsRest();
+                
+            }
+            IList<Items> menuitems = new List<Items>();
+            foreach (var item in list)
+            {
+                Items itm = new Items();
+                itm.Id = item.Id;
+                itm.ItemName = item.ItemName;
+                itm.Price = (float)item.Price;
+                itm.Description = item.Description;
+                itm.Category = item.Category;
+                itm.Qty = 1;
+                menuitems.Add(itm);
+
+            }
+            //get current date
             DateTime CreationDate = DateTime.Today;
             ViewBag.Date = CreationDate;
+
             //Store the items to a session
-
-            Session["sessionItemsList"] = list;
-            return View(list); 
+            Session["sessionItemsList"] = menuitems;
+            return View(menuitems); 
         }
 
-        /// <summary>
-        /// Get All Item using Rest
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult GetAllItemsRest()
-        {
 
-            var list = servicebridge.GetAllItemsRest();
-            return View("Index", list);
-        }
 
         /// <summary>
         /// Create check
@@ -51,7 +70,7 @@ namespace Web.Controllers
         /// <returns></returns>
         public JsonResult CreateCheck(string date,string chkNo,double subTot)
         {
-
+            bool msg =false;
             CheckSummary chkSummary = new CheckSummary();
             var orderList = (Session["OrderList"] as IList<Items>) ?? new List<Items>();
 
@@ -70,7 +89,16 @@ namespace Web.Controllers
             chkSummary.CreateDate = System.DateTime.Now;
             chkSummary.CheckNo = chkNo;
             chkSummary.Total = subTot;
-            bool  msg = servicebridge.CreateCheck(chkSummary);
+
+            var serviceType = Session["ServiceType"];
+            if (serviceType == null || serviceType == "SOAP")
+            {
+                msg = servicebridge.CreateCheck(chkSummary);
+            }
+            else
+            {
+                msg = servicebridge.CreateCheckRest(chkSummary);
+            }
             return Json(msg, JsonRequestBehavior.AllowGet);
         }
 
@@ -109,6 +137,28 @@ namespace Web.Controllers
           //  Session["products"] = null;
 
             return Json(item, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult DeleteItemfromList(int id)
+        {
+
+
+            //To get what you have stored to a session
+
+            var sessionItemsList = Session["sessionItemsList"] as IList<Items>;
+            var item = sessionItemsList.Where(i => i.Id == id).FirstOrDefault();
+
+            //Store the items to a session
+
+            var orderList = (Session["OrderList"] as IList<Items>) ?? new List<Items>();
+
+            var matchingvalues = orderList.Where(o => o.Id == id).FirstOrDefault();
+            var msg =orderList.Remove(item);
+                
+            Session["OrderList"] = orderList;
+
+            return Json(msg, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Foods()
         {

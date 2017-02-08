@@ -22,5 +22,7 @@ namespace Web.ServiceBridge.Interfaces
         IList<Items> GetAllItemsRest();
 
         bool CreateCheck(CheckSummary check);
+
+        bool CreateCheckRest(CheckSummary check);
     }
 }

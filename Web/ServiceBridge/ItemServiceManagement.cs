@@ -8,6 +8,8 @@ using Web.ServiceBridge.Interfaces;
 
 using System.Net;
 using Newtonsoft.Json;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Web.ServiceBridge
 {
@@ -72,6 +74,28 @@ namespace Web.ServiceBridge
             return true;
         }
 
+        public bool CreateCheckRest(CheckSummary check)
+        {
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    MemoryStream ms = new MemoryStream();
+                    DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(CheckSummary));
+                    serializerToUplaod.WriteObject(ms, check);
+                    wc.Headers["Content-type"] = "application/json";
+                    wc.UploadData(customerServiceUri + "Check", "POST", ms.ToArray());
+                }
+                
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+            return true;
+        }
 
         private static CheckSumry ConvertTo(CheckSummary Data)
         {

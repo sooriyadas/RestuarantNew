@@ -17,3 +17,11 @@ C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\Data\bin\Debug\EntityFramewo
 C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\Data\obj\Debug\Data.dll
 C:\Users\sbdasanayake\Desktop\Restuarant\Restuarant\Data\obj\Debug\Data.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\bin\Debug\Data.dll.config
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\bin\Debug\Data.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\bin\Debug\Data.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\bin\Debug\EntityFramework.xml
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\obj\Debug\Data.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Data\obj\Debug\Data.pdb

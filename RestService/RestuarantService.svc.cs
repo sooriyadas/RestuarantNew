@@ -19,6 +19,11 @@ namespace RestService
             return list;
         }
 
+        public bool CreateCheck(CheckSumry check)
+        {
+            bool msg = service.CreateCheck(check);
+            return msg;
+        }
 
     }
 }
