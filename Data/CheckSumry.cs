@@ -13,6 +13,6 @@ namespace Data
         public string CheckNo { get; set; }
         public DateTime CreateDate { get; set; }
         public double Total { get; set; }
-        public  IEnumerable<CheckDet> CheckDetails { get; set; }
+        public  List<CheckDet> CheckDetails { get; set; }
     }
 }

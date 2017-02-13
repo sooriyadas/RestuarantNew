@@ -13,7 +13,7 @@ namespace Web.ServiceBridge.Interfaces
         /// 
         /// </summary>
         /// <returns></returns>
-        IList<Items> GetAllItems();
+        IList<Items> GetAllItemsSOAP();
 
         /// <summary>
         /// 
@@ -21,8 +21,12 @@ namespace Web.ServiceBridge.Interfaces
         /// <returns></returns>
         IList<Items> GetAllItemsRest();
 
-        bool CreateCheck(CheckSummary check);
+
+
+        bool CreateCheckSOAP(CheckSummary check);
 
         bool CreateCheckRest(CheckSummary check);
+
+        string GetCheckNoSOAP();
     }
 }

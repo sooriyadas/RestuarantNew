@@ -18,6 +18,9 @@ namespace WcfService
 
         [OperationContract]
         bool CreateCheck(CheckSumry check);
+
+        [OperationContract]
+        string GetCheckNo();
     
     }
 

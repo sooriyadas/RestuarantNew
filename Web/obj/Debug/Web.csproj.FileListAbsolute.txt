@@ -110,6 +110,6 @@ C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\Web.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\Web.pdb
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\Microsoft.Web.Infrastructure.xml
-C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache

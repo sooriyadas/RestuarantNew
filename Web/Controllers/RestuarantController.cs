@@ -30,7 +30,7 @@ namespace Web.Controllers
             if (serviceType == null || serviceType == "SOAP")
             {
 
-                list = servicebridge.GetAllItems();
+                list = servicebridge.GetAllItemsSOAP();
 
             }
             else
@@ -52,11 +52,14 @@ namespace Web.Controllers
 
             }
             //get current date
-            DateTime CreationDate = DateTime.Today;
+            DateTime CreationDate = System.DateTime.Now;
             ViewBag.Date = CreationDate;
 
             //Store the items to a session
             Session["sessionItemsList"] = menuitems;
+
+            int CheckNo = Convert.ToInt32(servicebridge.GetCheckNoSOAP());
+            ViewBag.CheckNo = (CheckNo + 1);
             return View(menuitems); 
         }
 
@@ -74,7 +77,7 @@ namespace Web.Controllers
             CheckSummary chkSummary = new CheckSummary();
             var orderList = (Session["OrderList"] as IList<Items>) ?? new List<Items>();
 
-            IList<CheckDetail> checkDetail = new List<CheckDetail>();
+            List<CheckDetail> checkDetail = new List<CheckDetail>();
             foreach (var item in orderList)
             {
                 CheckDetail chkDet = new CheckDetail();
@@ -93,7 +96,7 @@ namespace Web.Controllers
             var serviceType = Session["ServiceType"];
             if (serviceType == null || serviceType == "SOAP")
             {
-                msg = servicebridge.CreateCheck(chkSummary);
+                msg = servicebridge.CreateCheckSOAP(chkSummary);
             }
             else
             {
@@ -160,48 +163,48 @@ namespace Web.Controllers
 
             return Json(msg, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Foods()
-        {
-            var list = servicebridge.GetAllItems(); 
+        //public ActionResult Foods()
+        //{
+        //    var list = servicebridge.GetAllItems(); 
 
-            var foods= list.Where(f=>f.Category=="Food").ToList();
+        //    var foods= list.Where(f=>f.Category=="Food").ToList();
 
-            IList<Items> menuitems = new List<Items>();
-            foreach (var item in foods)
-            {
-                Items itm = new Items();
-                itm.Id = item.Id;
-                itm.ItemName = item.ItemName;
-                itm.Price = (float)item.Price;
-                itm.Description = item.Description;
-                itm.Category = item.Category;
-                menuitems.Add(itm);
+        //    IList<Items> menuitems = new List<Items>();
+        //    foreach (var item in foods)
+        //    {
+        //        Items itm = new Items();
+        //        itm.Id = item.Id;
+        //        itm.ItemName = item.ItemName;
+        //        itm.Price = (float)item.Price;
+        //        itm.Description = item.Description;
+        //        itm.Category = item.Category;
+        //        menuitems.Add(itm);
 
-            }
+        //    }
                  
-            return PartialView("~Views/Restuarant/Partial/FoodsList",menuitems);
-        }
+        //    return PartialView("~Views/Restuarant/Partial/FoodsList",menuitems);
+        //}
 
-        public ActionResult Beverages()
-        {
-            var list = servicebridge.GetAllItems();
+        //public ActionResult Beverages()
+        //{
+        //    var list = servicebridge.GetAllItems();
 
-            var foods = list.Where(f => f.Category == "Beverage").ToList();
+        //    var foods = list.Where(f => f.Category == "Beverage").ToList();
 
-            IList<Items> menuitems = new List<Items>();
-            foreach (var item in foods)
-            {
-                Items itm = new Items();
-                itm.Id = item.Id;
-                itm.ItemName = item.ItemName;
-                itm.Price = (float)item.Price;
-                itm.Description = item.Description;
-                itm.Category = item.Category;
-                menuitems.Add(itm);
+        //    IList<Items> menuitems = new List<Items>();
+        //    foreach (var item in foods)
+        //    {
+        //        Items itm = new Items();
+        //        itm.Id = item.Id;
+        //        itm.ItemName = item.ItemName;
+        //        itm.Price = (float)item.Price;
+        //        itm.Description = item.Description;
+        //        itm.Category = item.Category;
+        //        menuitems.Add(itm);
 
-            }
+        //    }
 
-            return View("BeverageList", menuitems);
-        }
+        //    return View("BeverageList", menuitems);
+        //}
 	}
 }

@@ -56,8 +56,8 @@
 <div class="col-md-4 ">
     <h4>Order List</h4>
    <div>
-       Date : <label id="date">@ViewBag.Date</label><br />
-Chk No:<input type="text" id ="chkNo"></input>         
+       Date : @*<label id="date">@ViewBag.Date</label><br />*@ <span id="currTime"> </span> <br />
+Check No:<label id ="chkNo">@ViewBag.CheckNo</label>    
     </div>
     <table id="myTable" class="table">
 
@@ -185,7 +185,7 @@ Chk No:<input type="text" id ="chkNo"></input>
         debugger
         var data = getTableData();
         var date = $("#date").val();
-        var chkNo = $("#chkNo").val();
+        var chkNo = $("#chkNo").text();
         var subTot = $("#total").text();
 
         $.ajax({
@@ -201,7 +201,8 @@ Chk No:<input type="text" id ="chkNo"></input>
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (true) {
-                    alert("Successfully added")
+                    alert("Successfully added");
+                    window.location = '@Url.Action("Index", "Restuarant")'
                 }
                 else {
                 }
@@ -257,6 +258,22 @@ Chk No:<input type="text" id ="chkNo"></input>
         return data;
 
     }
+
+
+    function timeClock()
+    {
+        setTimeout(timeClock, 1000);
+        now = new Date();
+        debugger;
+       // f_date = now.getDate()+" "+now.getMonth()+" "+now.getFullYear()+" / "+timeFormat(now.getHours(), now.getMinutes());
+        document.getElementById("currTime").innerHTML = now;
+
+    }
+
+    $(function () {
+        timeClock();
+    });
+
 </script> 
 <style>
     .tab-content {

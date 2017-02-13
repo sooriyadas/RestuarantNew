@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Web.Models;
-using Web.ItemService;
+
 using Web.ServiceBridge.Interfaces;
 
 using System.Net;
 using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using Web.localhost;
 
 namespace Web.ServiceBridge
 {
     public class ItemServiceManagement : IItemServiceManagement
     {
-        ItemServiceClient service = new ItemServiceClient();
+      //  ItemServiceClient service = new ItemServiceClient();
         //  RestuarantServiceClient restservice = new RestuarantServiceClient();
-        public IList<Items> GetAllItems()
+        WebService webservice = new WebService();
+      
+
+  
+
+        public IList<Items> GetAllItemsSOAP()
         {
-            var list = service.GetAllItems();
+            var list = webservice.GetAllItemsSOAP();
 
 
             IList<Items> menuitems = new List<Items>();
@@ -68,11 +74,18 @@ namespace Web.ServiceBridge
             return menuitems;
         }
 
-        public bool CreateCheck(CheckSummary check)
+        public bool CreateCheckSOAP(CheckSummary check)
         {
-          bool msg = service.CreateCheck(ConvertTo(check));
+            bool msg = webservice.CreateCheckSOAP(ConvertTo(check));
             return true;
         }
+
+
+        //public bool CreateCheck(CheckSummary check)
+        //{
+        //bool msg = service.CreateCheck(ConvertToData(check));
+        //    return true;
+        //}
 
         public bool CreateCheckRest(CheckSummary check)
         {
@@ -117,6 +130,11 @@ namespace Web.ServiceBridge
             }
             chksummry.CheckDetails = checkdet.Cast<CheckDet>().ToArray();
             return chksummry;
+        }
+    
+        public string GetCheckNoSOAP()
+        {
+            return webservice.GetCheckNoSOAP();
         }
     }
 }

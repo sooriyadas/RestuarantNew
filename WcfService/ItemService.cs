@@ -23,5 +23,10 @@ namespace WcfService
             bool msg = service.CreateCheck(check);
             return msg;
         }
+
+        public string GetCheckNo()
+        {
+            return service.GetCheckNo();
+        }
     }
 }

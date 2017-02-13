@@ -15,8 +15,6 @@ C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\W
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\WcfService.pdb
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\Data.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\Data.pdb
-C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\EntityFramework.xml
-C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\obj\Debug\WcfService.csprojResolveAssemblyReference.cache
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\obj\Debug\WcfService.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\WcfService\obj\Debug\WcfService.pdb

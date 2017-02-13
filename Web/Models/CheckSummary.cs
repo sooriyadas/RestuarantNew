@@ -12,6 +12,6 @@ namespace Web.Models
         public string CheckNo { get; set; }
         public DateTime CreateDate { get; set; }
         public double Total { get; set; }
-        public IList<CheckDetail> CheckDetails { get; set; }
+        public List<CheckDetail> CheckDetails { get; set; }
     }
 }

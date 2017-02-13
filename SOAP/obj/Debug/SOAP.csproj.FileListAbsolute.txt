@@ -1,0 +1,8 @@
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\bin\SOAP.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\bin\SOAP.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\bin\Data.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\bin\EntityFramework.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\bin\Data.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\obj\Debug\SOAP.csprojResolveAssemblyReference.cache
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\obj\Debug\SOAP.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\SOAP\obj\Debug\SOAP.pdb

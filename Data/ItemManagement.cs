@@ -9,7 +9,7 @@ namespace Data
 {
     public class ItemManagement : IItemManagement
     {
-        public IList<MenuItem> GetAllItems()
+        public List<MenuItem> GetAllItems()
         {
             //IList<MenuItem> menuitems = new List<MenuItem>();
             //RestuarantEntities tstDb = new RestuarantEntities();
@@ -89,6 +89,19 @@ namespace Data
 
         }
 
+        public string GetCheckNo()
+        {
+            using (RestuarantEntitiesNew res = new RestuarantEntitiesNew())
+            {
 
+                string ckhno = res.CheckSummaries.OrderByDescending(c => c.Id).Select(r => r.Id).First().ToString();
+                //    return res.CheckSummaries.Select(r => r.CheckNo.LastOrDefault()
+                //   ).ToString();
+                return ckhno;
+            }
+
+
+            //return chkNo;
+        }
     }
 }

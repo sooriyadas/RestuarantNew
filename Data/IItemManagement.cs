@@ -8,8 +8,10 @@ namespace Data
 {
   public  interface IItemManagement
     {
-      IList<MenuItem> GetAllItems();
+      List<MenuItem> GetAllItems();
 
       bool CreateCheck(CheckSumry check);
+
+      string GetCheckNo();
     }
 }

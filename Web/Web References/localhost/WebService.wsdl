@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllItemsSOAP">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllItemsSOAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllItemsSOAPResult" type="tns:ArrayOfMenuItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMenuItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MenuItem" nillable="true" type="tns:MenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MenuItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateCheckSOAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="check" type="tns:CheckSumry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CheckSumry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckDetails" type="tns:ArrayOfCheckDet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCheckDet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CheckDet" nillable="true" type="tns:CheckDet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CheckDet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CheckId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateCheckSOAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateCheckSOAPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCheckNoSOAP">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCheckNoSOAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCheckNoSOAPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemsSOAPSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllItemsSOAP" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemsSOAPSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllItemsSOAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCheckSOAPSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCheckSOAP" />
+  </wsdl:message>
+  <wsdl:message name="CreateCheckSOAPSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCheckSOAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCheckNoSOAPSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCheckNoSOAP" />
+  </wsdl:message>
+  <wsdl:message name="GetCheckNoSOAPSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCheckNoSOAPResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemsSOAP">
+      <wsdl:input message="tns:GetAllItemsSOAPSoapIn" />
+      <wsdl:output message="tns:GetAllItemsSOAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCheckSOAP">
+      <wsdl:input message="tns:CreateCheckSOAPSoapIn" />
+      <wsdl:output message="tns:CreateCheckSOAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckNoSOAP">
+      <wsdl:input message="tns:GetCheckNoSOAPSoapIn" />
+      <wsdl:output message="tns:GetCheckNoSOAPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemsSOAP">
+      <soap:operation soapAction="http://tempuri.org/GetAllItemsSOAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCheckSOAP">
+      <soap:operation soapAction="http://tempuri.org/CreateCheckSOAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckNoSOAP">
+      <soap:operation soapAction="http://tempuri.org/GetCheckNoSOAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemsSOAP">
+      <soap12:operation soapAction="http://tempuri.org/GetAllItemsSOAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCheckSOAP">
+      <soap12:operation soapAction="http://tempuri.org/CreateCheckSOAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckNoSOAP">
+      <soap12:operation soapAction="http://tempuri.org/GetCheckNoSOAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:64951/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:64951/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

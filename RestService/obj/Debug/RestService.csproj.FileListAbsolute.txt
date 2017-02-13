@@ -12,7 +12,6 @@ C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\RestSe
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\Data.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\EntityFramework.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\Data.pdb
-C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\EntityFramework.xml
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.pdb

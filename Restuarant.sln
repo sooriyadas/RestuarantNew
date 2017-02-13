@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{92144219-021D-4A27-B608-2C223B078136}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C87C7D6F-28A7-4F2C-8910-8019E429C403} = {C87C7D6F-28A7-4F2C-8910-8019E429C403}
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{3EC6DFE4-CDCB-412F-8C28-1CE4175DECA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\RestService.csproj", "{C87C7D6F-28A7-4F2C-8910-8019E429C403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAP", "SOAP\SOAP.csproj", "{72BFD294-7275-404F-A5F3-30A9971804B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +37,10 @@ Global
 		{C87C7D6F-28A7-4F2C-8910-8019E429C403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C87C7D6F-28A7-4F2C-8910-8019E429C403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C87C7D6F-28A7-4F2C-8910-8019E429C403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BFD294-7275-404F-A5F3-30A9971804B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BFD294-7275-404F-A5F3-30A9971804B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BFD294-7275-404F-A5F3-30A9971804B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BFD294-7275-404F-A5F3-30A9971804B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
