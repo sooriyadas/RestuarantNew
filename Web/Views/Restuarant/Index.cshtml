@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<h2>Menu Items</h2>
+<h3 class="headermenu">Menu Items</h3>
 
 <div class="col-md-8">
 
 
-    <table class="table" id="menutbl" >
+    <table class="table table-striped table-hover" id="menutbl" >
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ItemName)
@@ -50,16 +50,16 @@
 }
 
     </table>
-    @Html.ActionLink("SOAP", "Index", "Restuarant",new{serviceType="SOAP" },null)
-    @Html.ActionLink("REST", "Index", "Restuarant",new{serviceType="REST" },null)
+    @Html.ActionLink("Back", "SelectService", "Restuarant")
+
 </div>
 <div class="col-md-4 ">
-    <h4>Order List</h4>
+    <h3 class="header">Order List</h3>
    <div>
        Date : @*<label id="date">@ViewBag.Date</label><br />*@ <span id="currTime"> </span> <br />
 Check No:<label id ="chkNo">@ViewBag.CheckNo</label>    
     </div>
-    <table id="myTable" class="table">
+    <table id="myTable" class="table table-striped table-hover">
 
         <tbody>
             <tr>
@@ -258,15 +258,18 @@ Check No:<label id ="chkNo">@ViewBag.CheckNo</label>
         return data;
 
     }
+    function timeFormat(h, m, s) {
 
+        return h + ":" + (m <= 9 ? '0' + m : m) + ":" + (s<= 9? '0'+ s:s);
+    }
 
     function timeClock()
     {
         setTimeout(timeClock, 1000);
         now = new Date();
         debugger;
-       // f_date = now.getDate()+" "+now.getMonth()+" "+now.getFullYear()+" / "+timeFormat(now.getHours(), now.getMinutes());
-        document.getElementById("currTime").innerHTML = now;
+      date = now.getDate()+" / "+(now.getMonth()+1)+" / "+now.getFullYear()+"  "+timeFormat(now.getHours(), now.getMinutes(),now.getSeconds());
+        document.getElementById("currTime").innerHTML = date;
 
     }
 
@@ -287,6 +290,17 @@ Check No:<label id ="chkNo">@ViewBag.CheckNo</label>
     }
 
     #menutbl {
-        background-color: rgb(234, 237, 200);
+        /*background-color: rgb(162, 172, 210);*/
     }
+    .header {
+        border-bottom: 2px solid #5bc0de;
+    }
+.headermenu
+    {
+    background-color: #3d98ad;
+    padding: 10px;
+    }
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: rgba(125, 167, 183, 0.36);
+}
 </style>

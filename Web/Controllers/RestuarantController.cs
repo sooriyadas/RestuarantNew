@@ -17,6 +17,16 @@ namespace Web.Controllers
         // GET: /Restuarant/
 
         IItemServiceManagement servicebridge = new ItemServiceManagement();
+
+        /// <summary>
+        /// Service View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SelectService()
+        {
+            return View("SelectService");
+        }
+
         /// <summary>
         /// Index Page
         /// </summary>
@@ -27,6 +37,7 @@ namespace Web.Controllers
             Session["OrderList"] = null;
             Session["ServiceType"] = serviceType ;
 
+            //check service type
             if (serviceType == null || serviceType == "SOAP")
             {
 
@@ -38,6 +49,7 @@ namespace Web.Controllers
                 list = servicebridge.GetAllItemsRest();
                 
             }
+
             IList<Items> menuitems = new List<Items>();
             foreach (var item in list)
             {
@@ -105,6 +117,11 @@ namespace Web.Controllers
             return Json(msg, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Add to list
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public JsonResult AddToList(int id)
         {
            
@@ -130,11 +147,9 @@ namespace Web.Controllers
                 orderList.Add(matchingvalues);
                 item = matchingvalues;
             }
-
-            
+          
             Session["OrderList"] = orderList;
-
-            
+           
             //to clear the session value
 
           //  Session["products"] = null;
@@ -142,10 +157,13 @@ namespace Web.Controllers
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
-
+        /// <summary>
+        /// Delete Item from List
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public JsonResult DeleteItemfromList(int id)
         {
-
 
             //To get what you have stored to a session
 

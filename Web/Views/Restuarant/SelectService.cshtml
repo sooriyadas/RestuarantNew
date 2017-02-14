@@ -1,0 +1,33 @@
+﻿
+
+@{
+    ViewBag.Title = "";
+}
+
+<h3 class="headermenu">Select Service </h3>
+
+<div class="col-md-6 col-md-offset-3">
+
+<div class="col-md-2 serv">
+ @Html.ActionLink("SOAP", "Index", "Restuarant",new{serviceType="SOAP" },null)
+</div>
+<div class="col-md-2 serv">
+   @Html.ActionLink("REST", "Index", "Restuarant",new{serviceType="REST" },null)
+</div>
+   
+ 
+</div>
+
+<script type="text/javascript">
+
+
+
+</script> 
+<style>
+    .serv {
+        padding: 30px;
+    background-color: #3e515a;
+margin:2px;
+    }
+</style>
+

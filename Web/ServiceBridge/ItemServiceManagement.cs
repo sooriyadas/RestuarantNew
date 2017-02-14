@@ -16,13 +16,17 @@ namespace Web.ServiceBridge
 {
     public class ItemServiceManagement : IItemServiceManagement
     {
-      //  ItemServiceClient service = new ItemServiceClient();
+        //  ItemServiceClient service = new ItemServiceClient();
         //  RestuarantServiceClient restservice = new RestuarantServiceClient();
         WebService webservice = new WebService();
-      
 
-  
 
+        #region SOAP service
+
+        /// <summary>
+        /// get all items using SOAP
+        /// </summary>
+        /// <returns></returns>
         public IList<Items> GetAllItemsSOAP()
         {
             var list = webservice.GetAllItemsSOAP();
@@ -43,9 +47,36 @@ namespace Web.ServiceBridge
             }
             return menuitems;
         }
+
+        /// <summary>
+        /// create check using SOAP service
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        public bool CreateCheckSOAP(CheckSummary check)
+        {
+            bool msg = webservice.CreateCheckSOAP(ConvertTo(check));
+            return true;
+        }
+
+
+        /// <summary>
+        /// Get check No
+        /// </summary>
+        /// <returns></returns>
+        public string GetCheckNoSOAP()
+        {
+            return webservice.GetCheckNoSOAP();
+        }
+
+        # endregion
+
+
+        #region REST service
+
         readonly string customerServiceUri = "http://localhost:5028/RestuarantService.svc/";
         //<summary>
-        //Rest service
+        //get all items using  Rest service
         //</summary>
         //<returns></returns>
         public IList<Items> GetAllItemsRest()
@@ -59,34 +90,15 @@ namespace Web.ServiceBridge
                 menuitems = JsonConvert.DeserializeObjectAsync<List<Items>>(dwml).Result;
             }
 
-            //IList<Items> menuitems = new List<Items>();
-            //foreach (var item in list)
-            //{
-            //    Items itm = new Items();
-            //    itm.Id = item.Id;
-            //    itm.ItemName = item.ItemName;
-            //    itm.Price = (float)item.Price;
-            //    itm.Description = item.Description;
-            //    itm.Category = item.Category;
-            //    menuitems.Add(itm);
-
-            //}
             return menuitems;
         }
 
-        public bool CreateCheckSOAP(CheckSummary check)
-        {
-            bool msg = webservice.CreateCheckSOAP(ConvertTo(check));
-            return true;
-        }
 
-
-        //public bool CreateCheck(CheckSummary check)
-        //{
-        //bool msg = service.CreateCheck(ConvertToData(check));
-        //    return true;
-        //}
-
+        /// <summary>
+        /// create check using REST service
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
         public bool CreateCheckRest(CheckSummary check)
         {
             try
@@ -99,17 +111,25 @@ namespace Web.ServiceBridge
                     wc.Headers["Content-type"] = "application/json";
                     wc.UploadData(customerServiceUri + "Check", "POST", ms.ToArray());
                 }
-                
+
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
 
             return true;
         }
+        #endregion
 
+        #region Private  Methods
+
+        /// <summary>
+        /// convert data
+        /// </summary>
+        /// <param name="Data"></param>
+        /// <returns></returns>
         private static CheckSumry ConvertTo(CheckSummary Data)
         {
             CheckSumry chksummry = new CheckSumry();
@@ -131,10 +151,14 @@ namespace Web.ServiceBridge
             chksummry.CheckDetails = checkdet.Cast<CheckDet>().ToArray();
             return chksummry;
         }
-    
-        public string GetCheckNoSOAP()
-        {
-            return webservice.GetCheckNoSOAP();
-        }
+        #endregion
+
+
+        //public bool CreateCheck(CheckSummary check)
+        //{
+        //bool msg = service.CreateCheck(ConvertToData(check));
+        //    return true;
+        //}
+
     }
 }
