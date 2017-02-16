@@ -15,3 +15,7 @@ C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\Data.p
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.csprojResolveAssemblyReference.cache
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\obj\Debug\RestService.pdb
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\PagedList.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\PagedList.Mvc.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\PagedList.xml
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\RestService\bin\PagedList.Mvc.xml

@@ -9,6 +9,10 @@ namespace Data
 {
     public class ItemManagement : IItemManagement
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<MenuItem> GetAllItems()
         {
             //IList<MenuItem> menuitems = new List<MenuItem>();
@@ -39,7 +43,12 @@ namespace Data
                 }).ToList();
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
         public bool CreateCheck(CheckSumry check)
         {
             int ret = 0;
@@ -89,6 +98,10 @@ namespace Data
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string GetCheckNo()
         {
             using (RestuarantEntitiesNew res = new RestuarantEntitiesNew())

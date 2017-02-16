@@ -113,3 +113,7 @@ C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\Microsoft.Web.
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.dll
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.pdb
 C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\PagedList.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\PagedList.Mvc.dll
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\PagedList.xml
+C:\Users\sbdasanayake\Desktop\RestuarantNew\RestuarantNew\Web\bin\PagedList.Mvc.xml
